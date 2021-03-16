@@ -6,6 +6,7 @@ In this lab, you will:
 
 - Connect to a MQTT server
 - Publish messages to a MQTT server
+- Subscribe to messages from an MQTT server
 
 ## MQTT
 
@@ -143,3 +144,49 @@ In these additional tasks you will change the simulated temperature sensor to a 
     Leave the file running and observe the messages in MQTT Explorer.
 
 Q. Is it easy to navigate and observe everyone else's sensor readings? What could be done to make it easier to navigate the other sensor readings?
+
+<br />
+
+## Exercise 3 - Subscribe to topics
+
+In this exercise, you will subscribe to topics and receive messages from an MQTT server. We will create and run a very crude and basic messaging app.
+
+Open both `exercise3receive.py` and `exercise3send.py` files.
+
+### Tasks
+ 
+1. As with previous exercises, in both files, replace the `MQTTSERVER` address with the IP address of the MQTT server and replace the `ID` with a unique device ID.
+
+1. When you have made the necessary changes, create a split terminal in VSCode and run each file in a seperate terminal run the file.
+
+    Run the following in one terminal:
+
+    ```bash
+    micropython exercise3receive.py
+    ```
+
+    and the following in the other:
+
+    ```bash
+    micropython exercise3send.py
+    ```
+
+    Observe the output from each file. Check that there are no error messages.
+
+    Type some messages in the `exercise3send.py` script. Notice that you get your message back in the `exercise3receive.py` script terminal, as well as everyone else's messages.
+
+    Q. How could you narrow down who you get messages from?
+
+1. In `exercise3receive.py`, change the subscribe subtopic so that people can send messages to just you.
+
+1. In `exercise3send.py`, change the publish subtopic to match someone else's subsribe topic. Try sending some messages to that person.
+
+<br />
+
+## Conclusion
+
+In this lab, you:
+
+- connected to an MQTT server
+- published messages to a MQTT topic
+- subscribed to and recieved messages from a MQTT topic
