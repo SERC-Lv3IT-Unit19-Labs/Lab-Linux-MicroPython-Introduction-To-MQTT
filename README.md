@@ -12,6 +12,16 @@ MQTT (MQ Telemetry Transport) is a lightweight publish/subscribe messaging proto
 
 ## Setup
 
+### Install Micropython
+
+Micropython needs to be installed onto the Ubuntu 20.04 host. Run the following command in a terminal:
+
+```bash
+sudo apt install -y micropython
+```
+
+### Configure path to 'lib' modules
+
 The `./lib` folder needs to be added to the micropython path (so that micropython can find the files in the folder). On a microcontroller, this directory is automatically added, but on Linux it needs to be added manually.
 
 Enter the following into a terminal:
