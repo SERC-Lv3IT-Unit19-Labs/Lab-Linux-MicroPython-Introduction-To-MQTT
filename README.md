@@ -5,6 +5,7 @@ This lab will cover an introduction to using MQTT with MicroPython.
 In this lab, you will:
 
 - Connect to a MQTT server
+- Publish messages to a MQTT server
 
 ## MQTT
 
@@ -80,3 +81,65 @@ Complete the following tasks.
 
 Q. How could you make it easier to find your message amoung everyone else's messages?
 
+<br />
+
+## Exercise 2 - Publish messages
+
+In this exercise you will simulate readings from a temperature sensor and send those readings to an MQTT topic.
+
+Open the `exercise2.py` file. This file uses the `simulated_sensor` module to create a simulated temperature sensor. The sensor object is created with the line
+
+```python
+sensor = simulated_sensor.TemperatureSensor(SENSORPIN)
+```
+
+A temperature reading is created with the method `read_temperature()`. You can see this with line 37.
+
+```python
+temp = sensor.read_temperature()
+```
+
+### Tasks
+
+1. As in Exercise 1, replace the `MQTTSERVER` address with the IP address of the MQTT server and replace the `ID` with a unique device ID.
+
+1. On line 29, create a sub-topic just for your sensor. Use a suitable name for the subtopic.
+
+1. Run the file.
+
+    ```bash
+    micropython exercise2.py
+    ```
+
+    Observe the output from the file. Check that there are no error messages.
+
+    Leave the file running and observe the messages in MQTT Explorer.
+
+
+Q. How would you increase or decrease the frequency of readings and messages?
+
+### Additional Tasks
+
+In these additional tasks you will change the simulated temperature sensor to a temperature and humidity sensor. This will produce two readings; one for temperature and one for humidity. You will publish temperature and humidity on seperate subtopics.
+
+1. Replace `TemperatureSensor` on line 19 with `TempHumSensor` as such
+
+    ```python
+    sensor = simulated_sensor.TempHumSensor(SENSORPIN)
+    ```
+
+1. The humidity can be read using the method `read_humidity()`. Create a variable to hold the humidity reading and use the `read_humidity()` method to take a reading. (If you are unsure how to do this, look at line 37 at how the temperature is read. Reading humidity will be similar.) You can also modify the print statement to include the humidity reading along side the temperature reading.
+
+1. Add an additional publish command to publish the humidity reading to the MQTT server. You will need to make further modifications to the code so that temperature and humidity publish to seperate suitable subtopics. Both readings still need to be identifiable as coming from your sensor.
+
+1. When you have made the necessary changes, run the file.
+
+    ```bash
+    micropython exercise2.py
+    ```
+
+    Observe the output from the file. Check that there are no error messages.
+
+    Leave the file running and observe the messages in MQTT Explorer.
+
+Q. Is it easy to navigate and observe everyone else's sensor readings? What could be done to make it easier to navigate the other sensor readings?
