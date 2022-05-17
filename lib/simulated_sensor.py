@@ -10,6 +10,8 @@ except ImportError:
     import time
     time.sleep_ms = lambda ms: time.sleep(ms / 1000)
 
+random.seed(int(time.time())) # seed random with current epoch time
+
 class TemperatureSensor:
     '''Represents a temperature sensor'''
 
