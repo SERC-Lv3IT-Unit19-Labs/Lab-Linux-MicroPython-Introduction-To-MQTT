@@ -12,7 +12,7 @@ ID = b"receive" + b"a unique id" # TODO create a unique id
 BASE_TOPIC = b"mqtt-lab/exercise-3"
 
 # topic to subscribe to messages from
-subscribe_topic = BASE_TOPIC + b"/my-messages"  # TODO change the subtopic to a topic that others can message your on
+subscribe_topic = BASE_TOPIC + b"/my-messages"  # TODO change the subtopic to a topic that others can message you on
 
 # mqtt message callback
 # this function is called if a message is received
